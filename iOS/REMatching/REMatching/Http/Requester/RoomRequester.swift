@@ -59,7 +59,7 @@ class RoomRequester {
         }
     }
     
-    class func post(name: String, place: String, rent: Int, phone: String, email: String, completion: @escaping ((Bool) -> ())) {
+    class func post(name: String, place: String, rent: Int, phone: String, email: String, completion: @escaping ((Bool, String?) -> ())) {
         
         let params = [
             "command": "postRoom",
@@ -70,7 +70,13 @@ class RoomRequester {
             "email": email.base64Encode() ?? ""
         ]
         ApiManager.post(params: params) { (result, data) in
-            completion(result)
+            if result, let dic = data as? Dictionary<String, Any> {
+                if dic["result"] as? String == "0", let roomId = dic["roomId"] as? String {
+                    completion(true, roomId)
+                    return
+                }
+            }
+            completion(false, nil)            
         }
     }
 
