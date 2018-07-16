@@ -16,20 +16,21 @@ class BorrowDetailViewController: UIViewController {
     @IBOutlet private weak var locationLabel: UILabel!
     @IBOutlet private weak var priceLabel: UILabel!
     
-    private var roomInfo: RoomInfo?
+    private var roomData: RoomData?
     
-    func set(roomInfo: RoomInfo) {
-        self.roomInfo = roomInfo
+    func set(roomData: RoomData) {
+        self.roomData = roomData
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        /*
         self.roomImageView.image = UIImage(named: self.roomInfo?.imageName ?? "")
         self.nameLabel.text = self.roomInfo?.name
         self.reviewLabel.text = self.roomInfo?.review
         self.locationLabel.text = self.roomInfo?.location
         self.priceLabel.text = "128,000円"
+ */
     }
     
     private func showAlert() {
