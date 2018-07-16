@@ -9,6 +9,17 @@
 /* Begin PBXBuildFile section */
 		BB13FC7E20E140F800BC58BA /* CreateLendCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB13FC7D20E140F800BC58BA /* CreateLendCompleteViewController.swift */; };
 		BB13FC8020E1427200BC58BA /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB13FC7F20E1427200BC58BA /* SearchViewController.swift */; };
+		BB6BC80420FC560100D4D72D /* HttpManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6BC80320FC560100D4D72D /* HttpManager.swift */; };
+		BB6BC80620FC560E00D4D72D /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6BC80520FC560E00D4D72D /* ApiManager.swift */; };
+		BB6BC80920FC562B00D4D72D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6BC80820FC562B00D4D72D /* Constants.swift */; };
+		BB6BC80C20FC577D00D4D72D /* RoomRequester.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6BC80B20FC577D00D4D72D /* RoomRequester.swift */; };
+		BB6BC80E20FC587C00D4D72D /* String+Base64.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6BC80D20FC587C00D4D72D /* String+Base64.swift */; };
+		BB6BC81020FC5DB300D4D72D /* ImageStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6BC80F20FC5DB300D4D72D /* ImageStorage.swift */; };
+		BB6BC81220FC5DBE00D4D72D /* ImageUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6BC81120FC5DBE00D4D72D /* ImageUploader.swift */; };
+		BB6BC81420FC61CC00D4D72D /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6BC81320FC61CC00D4D72D /* SearchTableViewCell.swift */; };
+		BB6BC81720FC690A00D4D72D /* Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6BC81620FC690A00D4D72D /* Loading.swift */; };
+		BB6BC81920FC691300D4D72D /* Loading.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB6BC81820FC691300D4D72D /* Loading.xib */; };
+		BB6BC81B20FC7B3100D4D72D /* UIImage+Crop.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6BC81A20FC7B3100D4D72D /* UIImage+Crop.swift */; };
 		BB798A4F20DE545C001D5D82 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB798A4E20DE545C001D5D82 /* AppDelegate.swift */; };
 		BB798A5620DE545C001D5D82 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB798A5520DE545C001D5D82 /* Assets.xcassets */; };
 		BB798A5920DE545C001D5D82 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB798A5720DE545C001D5D82 /* LaunchScreen.storyboard */; };
@@ -27,6 +38,17 @@
 /* Begin PBXFileReference section */
 		BB13FC7D20E140F800BC58BA /* CreateLendCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateLendCompleteViewController.swift; sourceTree = "<group>"; };
 		BB13FC7F20E1427200BC58BA /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		BB6BC80320FC560100D4D72D /* HttpManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpManager.swift; sourceTree = "<group>"; };
+		BB6BC80520FC560E00D4D72D /* ApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
+		BB6BC80820FC562B00D4D72D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		BB6BC80B20FC577D00D4D72D /* RoomRequester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomRequester.swift; sourceTree = "<group>"; };
+		BB6BC80D20FC587C00D4D72D /* String+Base64.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Base64.swift"; sourceTree = "<group>"; };
+		BB6BC80F20FC5DB300D4D72D /* ImageStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageStorage.swift; sourceTree = "<group>"; };
+		BB6BC81120FC5DBE00D4D72D /* ImageUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploader.swift; sourceTree = "<group>"; };
+		BB6BC81320FC61CC00D4D72D /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
+		BB6BC81620FC690A00D4D72D /* Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loading.swift; sourceTree = "<group>"; };
+		BB6BC81820FC691300D4D72D /* Loading.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Loading.xib; sourceTree = "<group>"; };
+		BB6BC81A20FC7B3100D4D72D /* UIImage+Crop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Crop.swift"; sourceTree = "<group>"; };
 		BB798A4B20DE545C001D5D82 /* REMatching.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = REMatching.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB798A4E20DE545C001D5D82 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BB798A5520DE545C001D5D82 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -55,6 +77,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BB6BC80220FC55CB00D4D72D /* Http */ = {
+			isa = PBXGroup;
+			children = (
+				BB6BC80320FC560100D4D72D /* HttpManager.swift */,
+				BB6BC80520FC560E00D4D72D /* ApiManager.swift */,
+				BB6BC80A20FC576F00D4D72D /* Requester */,
+				BB6BC80F20FC5DB300D4D72D /* ImageStorage.swift */,
+				BB6BC81120FC5DBE00D4D72D /* ImageUploader.swift */,
+			);
+			path = Http;
+			sourceTree = "<group>";
+		};
+		BB6BC80720FC561F00D4D72D /* System */ = {
+			isa = PBXGroup;
+			children = (
+				BB6BC80820FC562B00D4D72D /* Constants.swift */,
+			);
+			path = System;
+			sourceTree = "<group>";
+		};
+		BB6BC80A20FC576F00D4D72D /* Requester */ = {
+			isa = PBXGroup;
+			children = (
+				BB6BC80B20FC577D00D4D72D /* RoomRequester.swift */,
+			);
+			path = Requester;
+			sourceTree = "<group>";
+		};
+		BB6BC81520FC68F400D4D72D /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				BB6BC81620FC690A00D4D72D /* Loading.swift */,
+				BB6BC81820FC691300D4D72D /* Loading.xib */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		BB798A4220DE545B001D5D82 = {
 			isa = PBXGroup;
 			children = (
@@ -76,6 +135,8 @@
 			children = (
 				BB798A4E20DE545C001D5D82 /* AppDelegate.swift */,
 				BB798A6020DE548A001D5D82 /* View */,
+				BB6BC80220FC55CB00D4D72D /* Http */,
+				BB6BC80720FC561F00D4D72D /* System */,
 				BB798A6A20DE5AD8001D5D82 /* Extension */,
 				BB798A6120DE549B001D5D82 /* Storyboard */,
 				BB798A5520DE545C001D5D82 /* Assets.xcassets */,
@@ -92,6 +153,7 @@
 				BB798A6420DE54C9001D5D82 /* Tabbar */,
 				BB798A6E20DE640F001D5D82 /* Borrow */,
 				BB798A6F20DE6417001D5D82 /* Lend */,
+				BB6BC81520FC68F400D4D72D /* Common */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -125,6 +187,8 @@
 			children = (
 				BB798A6B20DE5AEA001D5D82 /* UIViewController+Scene.swift */,
 				BB798A7820DE8903001D5D82 /* CALayer+Border.swift */,
+				BB6BC80D20FC587C00D4D72D /* String+Base64.swift */,
+				BB6BC81A20FC7B3100D4D72D /* UIImage+Crop.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -136,6 +200,7 @@
 				BB798A7420DE6700001D5D82 /* BorrowTableViewCell.swift */,
 				BB798A7620DE86BE001D5D82 /* BorrowDetailViewController.swift */,
 				BB13FC7F20E1427200BC58BA /* SearchViewController.swift */,
+				BB6BC81320FC61CC00D4D72D /* SearchTableViewCell.swift */,
 			);
 			path = Borrow;
 			sourceTree = "<group>";
@@ -210,6 +275,7 @@
 			files = (
 				BB798A6320DE54B8001D5D82 /* Main.storyboard in Resources */,
 				BB798A5920DE545C001D5D82 /* LaunchScreen.storyboard in Resources */,
+				BB6BC81920FC691300D4D72D /* Loading.xib in Resources */,
 				BB798A5620DE545C001D5D82 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -225,13 +291,23 @@
 				BB798A6920DE575E001D5D82 /* SplashViewController.swift in Sources */,
 				BB798A7320DE642F001D5D82 /* LendViewController.swift in Sources */,
 				BB798A6C20DE5AEA001D5D82 /* UIViewController+Scene.swift in Sources */,
+				BB6BC81720FC690A00D4D72D /* Loading.swift in Sources */,
+				BB6BC81B20FC7B3100D4D72D /* UIImage+Crop.swift in Sources */,
+				BB6BC81220FC5DBE00D4D72D /* ImageUploader.swift in Sources */,
 				BB798A7920DE8903001D5D82 /* CALayer+Border.swift in Sources */,
+				BB6BC80920FC562B00D4D72D /* Constants.swift in Sources */,
 				BB798A7B20DE8DD0001D5D82 /* CreateLendViewController.swift in Sources */,
+				BB6BC81020FC5DB300D4D72D /* ImageStorage.swift in Sources */,
+				BB6BC81420FC61CC00D4D72D /* SearchTableViewCell.swift in Sources */,
 				BB13FC8020E1427200BC58BA /* SearchViewController.swift in Sources */,
 				BB798A6620DE54D7001D5D82 /* TabbarViewController.swift in Sources */,
 				BB13FC7E20E140F800BC58BA /* CreateLendCompleteViewController.swift in Sources */,
 				BB798A4F20DE545C001D5D82 /* AppDelegate.swift in Sources */,
+				BB6BC80C20FC577D00D4D72D /* RoomRequester.swift in Sources */,
+				BB6BC80620FC560E00D4D72D /* ApiManager.swift in Sources */,
 				BB798A7120DE6425001D5D82 /* BorrowViewController.swift in Sources */,
+				BB6BC80E20FC587C00D4D72D /* String+Base64.swift in Sources */,
+				BB6BC80420FC560100D4D72D /* HttpManager.swift in Sources */,
 				BB798A7520DE6700001D5D82 /* BorrowTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

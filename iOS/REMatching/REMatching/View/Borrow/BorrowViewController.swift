@@ -8,29 +8,12 @@
 
 import UIKit
 
-struct RoomInfo {
-    let imageName: String
-    let name: String
-    let review: String
-    let location: String
-}
-
 class BorrowViewController: UIViewController {
     
-    static let roomBase = [
-        RoomInfo(imageName: "room0", name: "シティタワー千代田区最上階", review: "★★★★★ 12件のレビュー", location: "東京都千代田区1-1-1"),
-        RoomInfo(imageName: "room1", name: "プラウドタワー麹町", review: "★★★☆☆ 1件のレビュー", location: "東京都千代田区1-1-1"),
-        RoomInfo(imageName: "room2", name: "ザ・スカイタワー 21階 角部屋", review: "★★★☆☆ 2件のレビュー", location: "東京都千代田区1-1-1"),
-        RoomInfo(imageName: "room3", name: "エクセルグランデ御茶ノ水", review: "★★★☆☆ 5件のレビュー", location: "東京都千代田区1-1-1"),
-        RoomInfo(imageName: "room4", name: "アトレレジデンス渋谷", review: "★☆☆☆☆ 8件のレビュー", location: "東京都渋谷区1-1-1"),
-        RoomInfo(imageName: "room5", name: "パークコード青山", review: "★★☆☆☆ 15件のレビュー", location: "東京都港区1-1-1"),
-        RoomInfo(imageName: "room6", name: "ジオグランデ六本木", review: "☆☆☆☆☆ 0件のレビュー", location: "東京都港区1-1-1"),
-        RoomInfo(imageName: "room7", name: "ブランズ西麻布", review: "☆☆☆☆☆ 0件のレビュー", location: "東京都港区1-1-1")
-    ]
-    
     @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var noDataLabel: UILabel!
     
-    private var rooms = [RoomInfo]()
+    private var rooms = [RoomData]()
     private var searchIndex = 0
 
     override func viewDidLoad() {
@@ -39,36 +22,31 @@ class BorrowViewController: UIViewController {
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 280
         
-        self.rooms = BorrowViewController.roomBase
+        self.rooms = RoomRequester.shared.dataList
+        self.reloadTable()
     }
     
     @IBAction func onTapSearch(_ sender: Any) {
         let search = self.viewController(identifier: "SearchViewController") as! SearchViewController
         search.set(defaultIndex: self.searchIndex, completion: { index in
             self.searchIndex = index
-            
+
             if index == 0 {
-                self.rooms = BorrowViewController.roomBase
-            } else if index == 1 {
-                self.rooms = [
-                    BorrowViewController.roomBase[0],
-                    BorrowViewController.roomBase[1],
-                    BorrowViewController.roomBase[2],
-                    BorrowViewController.roomBase[3]
-                ]
-            }else if index == 2 {
-                self.rooms = [BorrowViewController.roomBase[4]]
-            } else if index == 3 {
-                self.rooms = [
-                    BorrowViewController.roomBase[5],
-                    BorrowViewController.roomBase[6],
-                    BorrowViewController.roomBase[7]
-                ]
+                self.rooms = RoomRequester.shared.dataList
+            } else {
+                let pref = SearchViewController.prefs[index]
+                self.rooms = RoomRequester.shared.dataList.filter { $0.place.contains(pref) }
             }
             
-            self.tableView.reloadData()
+            self.reloadTable()
         })
         self.tabbarViewController()?.stack(viewController: search, animationType: .vertical)
+    }
+    
+    private func reloadTable() {
+        
+        self.noDataLabel.isHidden = !self.rooms.isEmpty
+        self.tableView.reloadData()
     }
 }
 
@@ -81,14 +59,14 @@ extension BorrowViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "BorrowTableViewCell", for: indexPath) as! BorrowTableViewCell
-        cell.configure(roomInfo: self.rooms[indexPath.row])
+        cell.configure(roomData: self.rooms[indexPath.row])
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let detail = self.viewController(identifier: "BorrowDetailViewController") as! BorrowDetailViewController
-        detail.set(roomInfo: self.rooms[indexPath.row])
+        detail.set(roomData: self.rooms[indexPath.row])
         self.tabbarViewController()?.stack(viewController: detail, animationType: .horizontal)
     }
 }

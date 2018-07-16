@@ -14,8 +14,23 @@ class SplashViewController: UIViewController {
         super.viewDidLoad()
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.stackTabbar()
+            self.fetch()
         }
+    }
+    
+    private func fetch() {
+        RoomRequester.shared.fetch(completion: { result in
+            if result {
+                self.stackTabbar()
+            } else {
+                let alert = UIAlertController(title: "エラー", message: "通信に失敗しました", preferredStyle: .alert)
+                let action = UIAlertAction(title: "リトライ", style: .default, handler: { _ in
+                    self.fetch()
+                })
+                alert.addAction(action)
+                self.present(alert, animated: true, completion: nil)
+            }
+        })
     }
     
     private func stackTabbar() {
