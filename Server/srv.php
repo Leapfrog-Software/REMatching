@@ -21,19 +21,17 @@ function getRoom() {
 	$data = [];
 	$rooms = Room::readAll();
 	foreach($rooms as $room) {
-		if (strcmp($room->approval, "1") == 0) {
-			$data[] = Array(
-					"id" => $room->id,
-					"approval" => $room->approval,
-					"score" => $room->score,
-					"review" => $room->review,
-					"name" => $room->name,
-					"place" => $room->place,
-					"rent" => $room->rent,
-					"phone" => $room->phone,
-					"email" => $room->email
-				);
-		}
+		$data[] = Array(
+				"id" => $room->id,
+				"approval" => $room->approval,
+				"score" => $room->score,
+				"review" => $room->review,
+				"name" => $room->name,
+				"place" => $room->place,
+				"rent" => $room->rent,
+				"phone" => $room->phone,
+				"email" => $room->email
+			);		
 	}
 	echo(json_encode(Array("result" => "0",
 							"data" => $data)));
