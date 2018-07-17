@@ -4,14 +4,10 @@ require "room.php";
 
 $command = $_POST["command"];
 
-DebugSave($command);
-
 if (strcmp($command, "getRoom") == 0) {
 	getRoom();
-} else if (strcmp($command, "postRoom") == 0) {
-	postRoom();
-} else if (strcmp($command, "uploadRoomImage") == 0) {
-	uploadRoomImage();
+} else if (strcmp($command, "updateRoom") == 0) {
+	updateRoom();
 } else {
   echo("unknown");
 }
@@ -34,40 +30,22 @@ function getRoom() {
 			);		
 	}
 	echo(json_encode(Array("result" => "0",
-							"data" => $data)));
+							"rooms" => $data)));
 }
 
-function postRoom() {
+function updateRoom() {
 
-	$name = $_POST["name"];
-	$place = $_POST["place"];
-	$rent = $_POST["rent"];
-	$phone = $_POST["phone"];
-	$email = $_POST["email"];
+	$roomid = $_POST["roomId"];
+	$approval = $_POST["approval"];
+	$score = $_POST["score"];
+	$review = $_POST["review"];
 
-	$roomId = Room::create($name, $place, $rent, $phone, $email);
-	if (!is_null($roomId)) {
-		echo(json_encode(Array("result" => "0", "roomId" => $roomId)));
-	} else {
-		echo(json_encode(Array("result" => "1")));
-	}
-}
-
-function uploadRoomImage() {
-
-	$roomId = $_POST["roomId"];
-	$file = $_FILES['image']['tmp_name'];
-	$fileName = "data/image/room/" . $roomId;
-
-	DebugSave($fileName);
-
-	if (move_uploaded_file($file, $fileName)) {
+	if (Room::update($roomId, $approval, $score, $review)) {
 		echo(json_encode(Array("result" => "0")));
 	} else {
 		echo(json_encode(Array("result" => "1")));
 	}
 }
-
 
 function DebugSave($str){
 
