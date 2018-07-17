@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MessageUI
 
 class BorrowDetailViewController: UIViewController {
 
@@ -24,19 +25,39 @@ class BorrowDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        /*
-        self.roomImageView.image = UIImage(named: self.roomInfo?.imageName ?? "")
-        self.nameLabel.text = self.roomInfo?.name
-        self.reviewLabel.text = self.roomInfo?.review
-        self.locationLabel.text = self.roomInfo?.location
-        self.priceLabel.text = "128,000円"
- */
+        
+        guard let roomData = self.roomData else {
+            return
+        }
+        ImageStorage.shared.fetch(url: Constants.RoomImageDirectory + roomData.id, imageView: self.roomImageView)
+        self.nameLabel.text = roomData.name
+
+        var review = ""
+        review += (roomData.score <= 0) ? "☆" : "★"
+        review += (roomData.score <= 1) ? "☆" : "★"
+        review += (roomData.score <= 2) ? "☆" : "★"
+        review += (roomData.score <= 3) ? "☆" : "★"
+        review += (roomData.score <= 4) ? "☆" : "★"
+        self.reviewLabel.text = review + " \(roomData.review)件のレビュー"
+        
+        self.locationLabel.text = roomData.place
+        
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.groupingSeparator = ","
+        formatter.groupingSize = 3
+        let rent = formatter.string(from: NSNumber(value: roomData.rent)) ?? ""
+        self.priceLabel.text = rent + "円"
     }
     
-    private func showAlert() {
-        let alert = UIAlertController(title: nil, message: "本番アプリでは管理人へ連絡します。", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        self.present(alert, animated: true)
+    private func call(to phone: String) {
+        
+        let urlString = "tel://" + phone
+        if let url = URL(string: urlString) {
+            if UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
+        }
     }
     
     @IBAction func onTapBack(_ sender: Any) {
@@ -44,10 +65,36 @@ class BorrowDetailViewController: UIViewController {
     }
 
     @IBAction func onTapCall(_ sender: Any) {
-        self.showAlert()
+
+        guard let phone = self.roomData?.phone else {
+            return
+        }
+        if phone.count == 0 {
+            return
+        }
+        let title = phone + "に発信します"
+        let alert = UIAlertController(title: title, message: "よろしいですか？", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: { [weak self] _ in
+            self?.call(to: phone)
+        })
+        alert.addAction(okAction)
+        let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel, handler: nil)
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true, completion: nil)
     }
     
     @IBAction func onTapMail(_ sender: Any) {
-        self.showAlert()
+        
+        guard let roomData = self.roomData else {
+            return
+        }
+        
+        if MFMailComposeViewController.canSendMail() {
+            let compose = MFMailComposeViewController()
+            compose.setToRecipients([roomData.email])
+            compose.setSubject("お問い合わせ")
+            compose.setMessageBody("お問い合わせ内容を入力してください", isHTML: false)
+            self.present(compose, animated: true, completion: nil)
+        }
     }
 }

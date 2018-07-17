@@ -770,7 +770,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LendTableViewCell" id="BpD-ED-WHi" customClass="LendTableViewCell" customModule="REMatching" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="LendTableViewCell" id="BpD-ED-WHi" customClass="LendTableViewCell" customModule="REMatching" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="BpD-ED-WHi" id="kYe-gA-Eof">
@@ -785,38 +785,57 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="部屋名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e7T-ZR-Bw4">
-                                                    <rect key="frame" x="112" y="12" width="243" height="17"/>
+                                                    <rect key="frame" x="112" y="16" width="187" height="17"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="住所" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TrF-MY-CPq">
-                                                    <rect key="frame" x="112" y="33" width="243" height="15"/>
+                                                    <rect key="frame" x="112" y="37" width="187" height="15"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="賃料" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YsR-Qg-AMe">
-                                                    <rect key="frame" x="112" y="64" width="29" height="17"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <rect key="frame" x="112" y="68" width="25" height="14.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" text="審査待ち" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nOK-cH-SVC">
+                                                    <rect key="frame" x="309" y="42" width="54" height="16"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vHU-2Y-ITE">
+                                                    <rect key="frame" x="0.0" y="99" width="375" height="1"/>
+                                                    <color key="backgroundColor" white="0.90000000000000002" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="1" id="Nkf-pW-d8o"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="b4Q-qU-7EA" firstAttribute="leading" secondItem="kYe-gA-Eof" secondAttribute="leading" constant="20" id="1gZ-af-IgD"/>
                                                 <constraint firstItem="TrF-MY-CPq" firstAttribute="leading" secondItem="b4Q-qU-7EA" secondAttribute="trailing" constant="12" id="33o-C5-bEX"/>
-                                                <constraint firstItem="e7T-ZR-Bw4" firstAttribute="top" secondItem="kYe-gA-Eof" secondAttribute="top" constant="12" id="C0F-Z7-B2e"/>
+                                                <constraint firstItem="e7T-ZR-Bw4" firstAttribute="top" secondItem="kYe-gA-Eof" secondAttribute="top" constant="16" id="C0F-Z7-B2e"/>
                                                 <constraint firstItem="YsR-Qg-AMe" firstAttribute="leading" secondItem="b4Q-qU-7EA" secondAttribute="trailing" constant="12" id="Fs0-oQ-p6t"/>
-                                                <constraint firstAttribute="trailing" secondItem="e7T-ZR-Bw4" secondAttribute="trailing" constant="20" id="JTa-7t-buB"/>
+                                                <constraint firstAttribute="bottom" secondItem="vHU-2Y-ITE" secondAttribute="bottom" id="Lw2-TN-pyn"/>
+                                                <constraint firstAttribute="trailing" secondItem="nOK-cH-SVC" secondAttribute="trailing" constant="12" id="Nco-in-ax3"/>
                                                 <constraint firstItem="b4Q-qU-7EA" firstAttribute="top" secondItem="kYe-gA-Eof" secondAttribute="top" constant="10" id="PiN-4w-N6I"/>
+                                                <constraint firstItem="nOK-cH-SVC" firstAttribute="leading" secondItem="TrF-MY-CPq" secondAttribute="trailing" constant="10" id="Vj7-lf-ZKH"/>
+                                                <constraint firstItem="vHU-2Y-ITE" firstAttribute="leading" secondItem="kYe-gA-Eof" secondAttribute="leading" id="Yfp-Or-hlh"/>
                                                 <constraint firstItem="YsR-Qg-AMe" firstAttribute="top" secondItem="TrF-MY-CPq" secondAttribute="bottom" constant="16" id="cjV-BO-zhV"/>
-                                                <constraint firstAttribute="trailing" secondItem="TrF-MY-CPq" secondAttribute="trailing" constant="20" id="fY0-UG-sYs"/>
+                                                <constraint firstAttribute="trailing" secondItem="vHU-2Y-ITE" secondAttribute="trailing" id="joq-Rm-KRd"/>
+                                                <constraint firstItem="nOK-cH-SVC" firstAttribute="centerY" secondItem="kYe-gA-Eof" secondAttribute="centerY" id="mwx-f5-20N"/>
                                                 <constraint firstItem="TrF-MY-CPq" firstAttribute="top" secondItem="e7T-ZR-Bw4" secondAttribute="bottom" constant="4" id="oxa-aB-CGa"/>
                                                 <constraint firstItem="e7T-ZR-Bw4" firstAttribute="leading" secondItem="b4Q-qU-7EA" secondAttribute="trailing" constant="12" id="sAd-5f-9sh"/>
+                                                <constraint firstItem="nOK-cH-SVC" firstAttribute="leading" secondItem="e7T-ZR-Bw4" secondAttribute="trailing" constant="10" id="x9q-QE-GtY"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="approvalLabel" destination="nOK-cH-SVC" id="szq-Mu-Pyq"/>
                                             <outlet property="nameLabel" destination="e7T-ZR-Bw4" id="YKs-qE-gKQ"/>
                                             <outlet property="placeLabel" destination="TrF-MY-CPq" id="tlI-ao-Q6B"/>
                                             <outlet property="rentLabel" destination="YsR-Qg-AMe" id="fEi-BM-UGs"/>

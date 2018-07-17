@@ -2,7 +2,7 @@
 //  LendTableViewCell.swift
 //  REMatching
 //
-//  Created by 藤田 祥一 on 2018/07/17.
+//  Created by Leapfrog-Software on 2018/07/17.
 //  Copyright © 2018年 Leapfrog-Inc. All rights reserved.
 //
 
@@ -14,6 +14,7 @@ class LendTableViewCell: UITableViewCell {
     @IBOutlet private weak var nameLabel: UILabel!
     @IBOutlet private weak var placeLabel: UILabel!
     @IBOutlet private weak var rentLabel: UILabel!
+    @IBOutlet private weak var approvalLabel: UILabel!
 
     override func prepareForReuse() {
         super.prepareForReuse()
@@ -32,6 +33,15 @@ class LendTableViewCell: UITableViewCell {
         formatter.numberStyle = .decimal
         formatter.groupingSeparator = ","
         formatter.groupingSize = 3
-        self.rentLabel.text = formatter.string(from: NSNumber(value: roomData.rent))
+        let rent = formatter.string(from: NSNumber(value: roomData.rent)) ?? ""
+        self.rentLabel.text = "賃料: " + rent + " 円/月"
+        
+        if roomData.approval {
+            self.approvalLabel.text = "掲載中"
+            self.approvalLabel.textColor = .approved
+        } else {
+            self.approvalLabel.text = "審査待ち"
+            self.approvalLabel.textColor = .notApproved
+        }
     }
 }
