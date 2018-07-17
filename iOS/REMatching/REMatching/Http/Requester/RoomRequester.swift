@@ -11,7 +11,7 @@ import Foundation
 struct RoomData {
     
     let id: String
-    let isChecked: Bool
+    let approval: Bool
     let score: Int
     var review: Int
     var name: String
@@ -27,7 +27,7 @@ struct RoomData {
         }
         self.id = roomId
         
-        self.isChecked = (data["isChecked"] as? String) == "1"
+        self.approval = (data["approval"] as? String) == "1"
         self.score = Int(data["score"] as? String ?? "0") ?? 0
         self.review = Int(data["review"] as? String ?? "0") ?? 0
         self.name = (data["name"] as? String)?.base64Decode() ?? ""
@@ -61,8 +61,8 @@ class RoomRequester {
         }
     }
     
-    func checkedRooms() -> [RoomData] {
-        return self.dataList.filter { $0.isChecked == true }
+    func approvedRooms() -> [RoomData] {
+        return self.dataList.filter { $0.approval == true }
     }
     
     class func post(name: String, place: String, rent: Int, phone: String, email: String, completion: @escaping ((Bool, String?) -> ())) {
