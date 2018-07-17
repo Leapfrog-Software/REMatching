@@ -18,6 +18,7 @@ class CreateLendViewController: UIViewController {
     @IBOutlet private weak var emailTextField: UITextField!
     
     private var roomImage: UIImage?
+    var completion: (() -> ())?
     
     private func showError(message: String) {
         let alert = UIAlertController(title: "エラー", message: message, preferredStyle: .alert)
@@ -104,8 +105,7 @@ class CreateLendViewController: UIViewController {
                 }
             })
         } else {
-            Loading.stop()
-            self.stackComplete()
+            self.fetchRoom()
         }
     }
     
@@ -117,6 +117,9 @@ class CreateLendViewController: UIViewController {
     }
     
     private func stackComplete() {
+        
+        self.completion?()
+        
         let complete = self.viewController(identifier: "CreateLendCompleteViewController") as! CreateLendCompleteViewController
         self.stack(viewController: complete, animationType: .horizontal)
     }

@@ -19,13 +19,16 @@ class LendViewController: UIViewController {
         self.reloadTable()
     }
     
-    func reloadTable() {
+    private func reloadTable() {
         self.tableView.reloadData()
         self.noDataLabel.isHidden = !SaveData.shared.createdRoomIds.isEmpty
     }
     
     @IBAction func onTapLend(_ sender: Any) {
         let create = self.viewController(identifier: "CreateLendViewController") as! CreateLendViewController
+        create.completion = {
+            self.reloadTable()
+        }
         self.tabbarViewController()?.stack(viewController: create, animationType: .horizontal)
     }
 }
