@@ -24,6 +24,7 @@ function getRoom() {
 		if (strcmp($room->approval, "1") == 0) {
 			$data[] = Array(
 					"id" => $room->id,
+					"approval" => $room->approval,
 					"score" => $room->score,
 					"review" => $room->review,
 					"name" => $room->name,
