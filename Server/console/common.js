@@ -58,3 +58,21 @@ function base64Encode(str) {
 function base64Decode(str) {
   return decodeURIComponent(escape(atob(str)));
 }
+
+function getParam(key) {
+
+  var urlSplit = location.search.split("?");
+  if (urlSplit.length < 2) {
+    return "";
+  }
+  var params = urlSplit[1].split("&");
+  for (var i = 0; i < params.length; i++) {
+    var keyVal = params[i].split("=");
+    if (keyVal.length == 2) {
+      if (keyVal[0] === key) {
+        return keyVal[1];
+      }
+    }
+  }
+  return "";
+}

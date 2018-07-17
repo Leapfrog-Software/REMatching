@@ -77,20 +77,19 @@ class Room {
 
   static function update($id, $approval, $score, $review) {
 
+    $str = "";
+
     $roomList = Room::readAll();
     foreach ($roomList as &$roomData) {
       if (strcmp($roomData->id, $id) == 0) {
-        $roomData->approval = "1";
+        $roomData->approval = $approval;
         $roomData->score = $score;
-        $roomData->$review = $review;
+        $roomData->review = $review;
       }
-    }
-
-    $str = "";
-    foreach ($roomList as $roomData) {
       $str .= $roomData->toFileString();
     }
-    if (file_put_contents(Room::FILE_NAME, $roomData->toFileString()) !== FALSE) {
+
+    if (file_put_contents(Room::FILE_NAME, $str) !== FALSE) {
       return true;
     } else {
       return false;
