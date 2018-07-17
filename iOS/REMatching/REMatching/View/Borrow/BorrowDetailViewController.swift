@@ -16,6 +16,8 @@ class BorrowDetailViewController: UIViewController {
     @IBOutlet private weak var reviewLabel: UILabel!
     @IBOutlet private weak var locationLabel: UILabel!
     @IBOutlet private weak var priceLabel: UILabel!
+    @IBOutlet private weak var phoneButton: UIButton!
+    @IBOutlet private weak var mailButton: UIButton!
     
     private var roomData: RoomData?
     
@@ -48,6 +50,15 @@ class BorrowDetailViewController: UIViewController {
         formatter.groupingSize = 3
         let rent = formatter.string(from: NSNumber(value: roomData.rent)) ?? ""
         self.priceLabel.text = rent + "円"
+        
+        if roomData.phone.count == 0 {
+            self.phoneButton.setTitleColor(.inactiveColor, for: .normal)
+            self.phoneButton.layer.borderUIColor = .inactiveColor
+        }
+        if roomData.email.count == 0 {
+            self.mailButton.setTitleColor(.inactiveColor, for: .normal)
+            self.mailButton.layer.borderUIColor = .inactiveColor
+        }
     }
     
     private func call(to phone: String) {
@@ -86,6 +97,9 @@ class BorrowDetailViewController: UIViewController {
     @IBAction func onTapMail(_ sender: Any) {
         
         guard let roomData = self.roomData else {
+            return
+        }
+        if roomData.email.count == 0 {
             return
         }
         

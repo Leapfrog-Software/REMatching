@@ -390,7 +390,9 @@
                     </view>
                     <connections>
                         <outlet property="locationLabel" destination="gQv-vF-flU" id="Rqh-AE-bqX"/>
+                        <outlet property="mailButton" destination="OWO-KG-J3X" id="tHP-sn-EVP"/>
                         <outlet property="nameLabel" destination="EtQ-av-HlV" id="Beo-Rf-cWl"/>
+                        <outlet property="phoneButton" destination="a8D-4m-lpf" id="nug-wu-bmf"/>
                         <outlet property="priceLabel" destination="Qn0-zG-WLf" id="o0y-1N-Uxb"/>
                         <outlet property="reviewLabel" destination="Uh0-IU-ugk" id="W5F-2c-tPN"/>
                         <outlet property="roomImageView" destination="2qe-GG-X0S" id="HIn-z1-Aed"/>

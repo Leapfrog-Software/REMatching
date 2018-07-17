@@ -17,5 +17,9 @@ extension UIColor {
     class var notApproved: UIColor {
         return UIColor(red: 244 / 255, green: 72 / 255, blue: 75 / 255, alpha: 1.0)
     }
+    
+    class var inactiveColor: UIColor {
+        return UIColor(white: 0.7, alpha: 1.0)
+    }
 }
 
