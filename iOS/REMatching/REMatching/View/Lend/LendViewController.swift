@@ -9,9 +9,39 @@
 import UIKit
 
 class LendViewController: UIViewController {
+    
+    @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var noDataLabel: UILabel!
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.reloadTable()
+    }
+    
+    func reloadTable() {
+        self.tableView.reloadData()
+        self.noDataLabel.isHidden = !SaveData.shared.createdRoomIds.isEmpty
+    }
+    
     @IBAction func onTapLend(_ sender: Any) {
         let create = self.viewController(identifier: "CreateLendViewController") as! CreateLendViewController
         self.tabbarViewController()?.stack(viewController: create, animationType: .horizontal)
+    }
+}
+
+extension LendViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return SaveData.shared.createdRoomIds.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "LendTableViewCell", for: indexPath) as! LendTableViewCell
+        if let roomData = (RoomRequester.shared.dataList.filter { $0.id == SaveData.shared.createdRoomIds[indexPath.row] }).first {
+            cell.configure(roomData: roomData)
+        }
+        return cell
     }
 }

@@ -11,6 +11,8 @@ import UIKit
 class CreateLendCompleteViewController: UIViewController {
 
     @IBAction func onTapClose(_ sender: Any) {
+        
+        (self.parent?.parent as? LendViewController)?.reloadTable()
         self.parent?.pop(animationType: .horizontal)
     }
 }

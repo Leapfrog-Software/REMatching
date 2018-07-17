@@ -22,7 +22,7 @@ class BorrowViewController: UIViewController {
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 280
         
-        self.rooms = RoomRequester.shared.dataList
+        self.rooms = RoomRequester.shared.checkedRooms()
         self.reloadTable()
     }
     
@@ -32,10 +32,10 @@ class BorrowViewController: UIViewController {
             self.searchIndex = index
 
             if index == 0 {
-                self.rooms = RoomRequester.shared.dataList
+                self.rooms = RoomRequester.shared.checkedRooms()
             } else {
                 let pref = SearchViewController.prefs[index]
-                self.rooms = RoomRequester.shared.dataList.filter { $0.place.contains(pref) }
+                self.rooms = RoomRequester.shared.checkedRooms().filter { $0.place.contains(pref) }
             }
             
             self.reloadTable()

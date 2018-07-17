@@ -74,11 +74,15 @@ class CreateLendViewController: UIViewController {
 
         RoomRequester.post(name: name, place: place, rent: Int(rent) ?? 0, phone: phone, email: email, completion: { result, roomId in
             
-            Loading.stop()
-            
             if result, let id = roomId {
                 self.imageUpload(roomId: id)
+                
+                let saveData = SaveData.shared
+                saveData.createdRoomIds.append(id)
+                saveData.save()
+                
             } else {
+                Loading.stop()
                 self.showError(message: "通信に失敗しました")
             }
         })
@@ -93,14 +97,23 @@ class CreateLendViewController: UIViewController {
             ]
             ImageUploader.post(url: Constants.ServerApiUrl, image: image, params: params, completion: { result, _ in
                 if result {
-                    self.stackComplete()
+                    self.fetchRoom()
                 } else {
+                    Loading.stop()
                     self.showError(message: "通信に失敗しました")
                 }
             })
         } else {
+            Loading.stop()
             self.stackComplete()
         }
+    }
+    
+    private func fetchRoom() {
+        RoomRequester.shared.fetch(completion: { _ in
+            Loading.stop()
+            self.stackComplete()
+        })
     }
     
     private func stackComplete() {
