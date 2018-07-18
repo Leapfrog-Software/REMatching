@@ -31,6 +31,10 @@ class TabbarViewController: UIViewController {
         self.lendViewController = lendViewController
         
         self.changeTab(index: 0)
+        
+        Timer.scheduledTimer(withTimeInterval: 60, repeats: true, block: { [weak self] _ in
+            self?.timerProc()
+        })
     }
     
     private func addContent(view: UIView) {
@@ -53,6 +57,15 @@ class TabbarViewController: UIViewController {
         
         self.borrowViewController?.view.isHidden = (index != 0)
         self.lendViewController?.view.isHidden = (index != 1)
+    }
+    
+    private func timerProc() {
+        RoomRequester.shared.fetch(completion: { result in
+            if result {
+                self.borrowViewController?.reloadTable()
+                self.lendViewController?.reloadTable()
+            }
+        })
     }
     
     @IBAction func onTapBorrow(_ sender: Any) {

@@ -22,7 +22,6 @@ class BorrowViewController: UIViewController {
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 280
         
-        self.rooms = RoomRequester.shared.approvedRooms()
         self.reloadTable()
     }
     
@@ -30,23 +29,22 @@ class BorrowViewController: UIViewController {
         let search = self.viewController(identifier: "SearchViewController") as! SearchViewController
         search.set(defaultIndex: self.searchIndex, completion: { index in
             self.searchIndex = index
-
-            if index == 0 {
-                self.rooms = RoomRequester.shared.approvedRooms()
-            } else {
-                let pref = SearchViewController.prefs[index]
-                self.rooms = RoomRequester.shared.approvedRooms().filter { $0.place.contains(pref) }
-            }
-            
             self.reloadTable()
         })
         self.tabbarViewController()?.stack(viewController: search, animationType: .vertical)
     }
     
-    private func reloadTable() {
+    func reloadTable() {
         
-        self.noDataLabel.isHidden = !self.rooms.isEmpty
+        if searchIndex == 0 {
+            self.rooms = RoomRequester.shared.approvedRooms()
+        } else {
+            let pref = SearchViewController.prefs[self.searchIndex]
+            self.rooms = RoomRequester.shared.approvedRooms().filter { $0.place.contains(pref) }
+        }
+    
         self.tableView.reloadData()
+        self.noDataLabel.isHidden = !self.rooms.isEmpty
     }
 }
 

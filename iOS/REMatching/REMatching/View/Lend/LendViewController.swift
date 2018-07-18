@@ -21,7 +21,7 @@ class LendViewController: UIViewController {
         self.reloadTable()
     }
     
-    private func reloadTable() {
+    func reloadTable() {
         self.tableView.reloadData()
         self.noDataLabel.isHidden = !SaveData.shared.createdRoomIds.isEmpty
     }
