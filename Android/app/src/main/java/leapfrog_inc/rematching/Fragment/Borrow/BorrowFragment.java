@@ -96,7 +96,9 @@ public class BorrowFragment extends BaseFragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 RoomRequester.RoomData roomData = (RoomRequester.RoomData) adapterView.getItemAtPosition(i);
-
+                BorrowDetailFragment fragment = new BorrowDetailFragment();
+                fragment.set(roomData);
+                stackFragment(fragment, AnimationType.horizontal);
             }
         });
     }
