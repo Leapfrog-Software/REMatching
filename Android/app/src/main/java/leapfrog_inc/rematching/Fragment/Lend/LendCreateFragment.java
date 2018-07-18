@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.content.Loader;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
@@ -27,12 +28,12 @@ import android.widget.ImageView;
 import android.widget.ScrollView;
 
 import leapfrog_inc.rematching.Fragment.BaseFragment;
+import leapfrog_inc.rematching.Fragment.Common.Dialog.Dialog;
+import leapfrog_inc.rematching.Fragment.Common.Loading.Loading;
 import leapfrog_inc.rematching.Http.ImageUploader;
 import leapfrog_inc.rematching.Http.Requester.RoomRequester;
 import leapfrog_inc.rematching.R;
-import leapfrog_inc.rematching.System.Constants;
 import leapfrog_inc.rematching.System.DeviceUtility;
-import leapfrog_inc.rematching.System.PicassoUtility;
 import leapfrog_inc.rematching.System.SaveData;
 
 public class LendCreateFragment extends BaseFragment {
@@ -211,11 +212,14 @@ public class LendCreateFragment extends BaseFragment {
             return;
         }
 
-        // TODO Loading
+        Loading.start(getActivity());
 
         RoomRequester.post(name, place, rentInt, phone, email, new RoomRequester.RoomRequesterPostCallback() {
             @Override
             public void didReceiveData(boolean result, String roomId) {
+
+                Loading.stop(getActivity());
+
                 if (result) {
                     uploadImage(roomId);
 
@@ -223,7 +227,12 @@ public class LendCreateFragment extends BaseFragment {
                     saveData.createdRoomIds.add(roomId);
                     saveData.save();
                 } else {
-                    // TODO
+                    leapfrog_inc.rematching.Fragment.Common.Dialog.Dialog.show(getActivity(), leapfrog_inc.rematching.Fragment.Common.Dialog.Dialog.Style.error, "エラー", "通信に失敗しました", new leapfrog_inc.rematching.Fragment.Common.Dialog.Dialog.DialogCallback() {
+                        @Override
+                        public void didClose() {
+
+                        }
+                    });
                 }
             }
         });
@@ -244,7 +253,11 @@ public class LendCreateFragment extends BaseFragment {
                     if (result) {
                         fetchRoom();
                     } else {
-                        // TODO
+                        Dialog.show(getActivity(), Dialog.Style.error, "エラー", "通信に失敗しました", new Dialog.DialogCallback() {
+                            @Override
+                            public void didClose() {
+                            }
+                        });
                     }
                 }
             });
@@ -263,6 +276,11 @@ public class LendCreateFragment extends BaseFragment {
     }
 
     private void showError(String message) {
-        // TODO
+        Dialog.show(getActivity(), Dialog.Style.error, "エラー", message, new Dialog.DialogCallback() {
+            @Override
+            public void didClose() {
+
+            }
+        });
     }
 }

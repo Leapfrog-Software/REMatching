@@ -18,7 +18,7 @@
             android:orientation="vertical" />
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="56dp"
             android:orientation="horizontal">
             <!-- Tab1 -->
             <FrameLayout
@@ -36,7 +36,7 @@
                         android:src="@drawable/tab1_on"
                         android:scaleType="fitCenter"
                         android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="11dp"/>
+                        android:layout_marginTop="8dp"/>
                     <ImageView
                         android:id="@+id/tab1OffImageView"
                         android:layout_width="24dp"
@@ -44,17 +44,17 @@
                         android:src="@drawable/tab1_off"
                         android:scaleType="fitCenter"
                         android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="11dp"
+                        android:layout_marginTop="8dp"
                         android:visibility="gone"/>
                     <TextView
                         android:id="@+id/tab1TextView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="借りる"
-                        android:textSize="10dp"
+                        android:textSize="12dp"
                         android:textColor="@color/tabSelected"
                         android:gravity="center_horizontal"
-                        android:layout_marginTop="6dp"/>
+                        android:layout_marginTop="4dp"/>
                 </LinearLayout>
                 <Button
                     android:id="@+id/tab1Button"
@@ -79,7 +79,8 @@
                         android:src="@drawable/tab2_on"
                         android:scaleType="fitCenter"
                         android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="11dp"/>
+                        android:layout_marginTop="8dp"
+                        android:visibility="gone"/>
                     <ImageView
                         android:id="@+id/tab2OffImageView"
                         android:layout_width="24dp"
@@ -87,17 +88,16 @@
                         android:src="@drawable/tab2_off"
                         android:scaleType="fitCenter"
                         android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="11dp"
-                        android:visibility="gone"/>
+                        android:layout_marginTop="8dp" />
                     <TextView
                         android:id="@+id/tab2TextView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="貸す"
-                        android:textSize="10dp"
-                        android:textColor="@color/tabSelected"
+                        android:textSize="12dp"
+                        android:textColor="@color/tabUnselected"
                         android:gravity="center_horizontal"
-                        android:layout_marginTop="6dp"/>
+                        android:layout_marginTop="4dp"/>
                 </LinearLayout>
                 <Button
                     android:id="@+id/tab2Button"

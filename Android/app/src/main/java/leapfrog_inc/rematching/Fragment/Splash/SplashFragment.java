@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import leapfrog_inc.rematching.Fragment.BaseFragment;
+import leapfrog_inc.rematching.Fragment.Common.Dialog.Dialog;
 import leapfrog_inc.rematching.Fragment.Tabbar.TabbarFragment;
 import leapfrog_inc.rematching.Http.Requester.RoomRequester;
 import leapfrog_inc.rematching.R;
@@ -36,7 +37,12 @@ public class SplashFragment extends BaseFragment {
                 if (result) {
                     stackFragment(new TabbarFragment(), AnimationType.none);
                 } else {
-                    // TODO
+                    Dialog.show(getActivity(), Dialog.Style.error, "エラー", "通信に失敗しました", new Dialog.DialogCallback() {
+                        @Override
+                        public void didClose() {
+                            fetch();
+                        }
+                    });
                 }
             }
         });
