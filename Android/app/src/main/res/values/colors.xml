@@ -7,4 +7,6 @@
     <color name="mainBlack">#303030</color>
     <color name="tabSelected">#303030</color>
     <color name="tabUnselected">#B4B4B4</color>
+    <color name="separator">#C0C0C0</color>
+    <color name="inactiveColor">#9A9A9A</color>
 </resources>
