@@ -25,6 +25,8 @@ function getRoom() {
 
 function display(room) {
 
+  document.getElementById("room_img").innerHTML = "<img src='../data/image/room" + room.id + "' onerror=\"this.src='img/no_image.png'\" style='height:80px'/>";
+
   document.getElementById("id").value = room.id;
 
   if (room.approval === "1") {
