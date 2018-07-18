@@ -59,7 +59,12 @@ public class BorrowFragment extends BaseFragment {
         });
     }
 
-    public void resetListView(View view) {
+    public void resetListView(View v) {
+
+        View view = v;
+        if (view == null) {
+            view = getView();
+        }
 
         int count = 0;
 

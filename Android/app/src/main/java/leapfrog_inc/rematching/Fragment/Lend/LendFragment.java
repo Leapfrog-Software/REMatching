@@ -103,7 +103,7 @@ public class LendFragment extends BaseFragment {
 
             ImageView roomImageView = (ImageView)convertView.findViewById(R.id.roomImageView);
             ViewGroup.LayoutParams imageLayoutParams = roomImageView.getLayoutParams();
-            imageLayoutParams.height = (DeviceUtility.getWindowSize((Activity) mContext).x - (int)(60 * DeviceUtility.getDeviceDensity((Activity)mContext))) / 2;
+            imageLayoutParams.height = (DeviceUtility.getWindowSize((Activity) mContext).x - (int)(60 * DeviceUtility.getDeviceDensity((Activity)mContext))) / 5;
             roomImageView.setLayoutParams(imageLayoutParams);
 
             ((TextView)convertView.findViewById(R.id.nameTextView)).setText(data.name);
