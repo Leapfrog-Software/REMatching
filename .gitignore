@@ -810,6 +810,3 @@ Android/app/build/intermediates/splits-support/debug/apk-list/apk-list.gson
 Android/app/build/intermediates/splits-support/debug/split-list/split-list.gson
 Android/app/build/intermediates/symbols/debug/R.txt
 Android/app/build/outputs/logs/manifest-merger-debug-report.txt
-Android/app/build/intermediates/blame/res/debug/multi-v2/values-b+sr+Latn.json
-Android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-b+sr+Latn/values-b+sr+Latn.xml
-Android/app/build/intermediates/res/merged/debug/values-b+sr+Latn_values-b+sr+Latn.arsc.flat
