@@ -6,4 +6,33 @@
     android:background="#fff"
     android:clickable="true">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ご登録ありがとうございました。\n審査が完了するまでお待ちください。"
+            android:textSize="14dp"
+            android:textAlignment="center"
+            android:textColor="@color/mainBlack"
+            android:lineSpacingMultiplier="1.5"
+            android:layout_gravity="center_horizontal"/>
+
+        <Button
+            android:id="@+id/backButton"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:text="トップへ戻る"
+            android:textSize="16dp"
+            android:textColor="@color/mainBlack"
+            android:textStyle="bold"
+            android:background="@drawable/shape_lend_create_complete_button"
+            android:layout_marginTop="40dp"/>
+    </LinearLayout>
+
 </FrameLayout>
