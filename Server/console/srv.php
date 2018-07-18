@@ -27,7 +27,7 @@ function getRoom() {
 				"rent" => $room->rent,
 				"phone" => $room->phone,
 				"email" => $room->email
-			);		
+			);
 	}
 	echo(json_encode(Array("result" => "0",
 							"rooms" => $data)));
@@ -35,7 +35,7 @@ function getRoom() {
 
 function updateRoom() {
 
-	$roomid = $_POST["roomId"];
+	$roomId = $_POST["roomId"];
 	$approval = $_POST["approval"];
 	$score = $_POST["score"];
 	$review = $_POST["review"];

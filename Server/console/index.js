@@ -25,6 +25,13 @@ function display(rooms) {
     var tdId = tr.insertCell(-1);
     tdId.innerHTML = rooms[i].id;
 
+    var tdStatus = tr.insertCell(-1);
+    if (rooms[i].approval === "1") {
+      tdStatus.innerHTML = "掲載中";
+    } else {
+      tdStatus.innerHTML = "未承認";
+    }
+
     var tdName = tr.insertCell(-1);
     tdName.innerHTML = base64Decode(rooms[i].name);
 
@@ -32,7 +39,7 @@ function display(rooms) {
     tdPlace.innerHTML = base64Decode(rooms[i].place);
 
     var tdRent = tr.insertCell(-1);
-    tdRent.innerHTML = rooms[i].rent;
+    tdRent.innerHTML = rooms[i].rent.replace(/(\d)(?=(\d{3})+$)/g, '$1,');
 
     var tdEdit = tr.insertCell(-1);
     var href = "javascript:onClickEdit(\"" + rooms[i].id + "\")";
