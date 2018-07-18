@@ -130,7 +130,7 @@ extension CreateLendViewController: UIImagePickerControllerDelegate, UINavigatio
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage
         
-        if let cropedImage = image.crop(size: CGSize(width: 240, height: 240)) {
+        if let cropedImage = image.crop(size: CGSize(width: 400, height: 200)) {
             self.roomImageView.image = cropedImage
             self.roomImage = cropedImage
             picker.dismiss(animated: true, completion: nil)
