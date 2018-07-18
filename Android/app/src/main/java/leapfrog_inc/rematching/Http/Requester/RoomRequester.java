@@ -101,4 +101,42 @@ public class RoomRequester {
         }
         return null;
     }
+
+    public static void post(String name, String place, int rent, String phone, String email, final RoomRequesterPostCallback callback) {
+
+        HttpManager httpManager = new HttpManager(new HttpManager.HttpCallback() {
+            @Override
+            public void didReceiveData(boolean result, String data) {
+                if (result) {
+                    try {
+                        JSONObject json = new JSONObject(data);
+                        if (json.getString("result").equals("0")) {
+                            String roomId = json.getString("roomId");
+                            callback.didReceiveData(true, roomId);
+                            return;
+                        }
+                    } catch (Exception e) {}
+                }
+                callback.didReceiveData(false, null);
+            }
+        });
+
+        StringBuffer param = new StringBuffer();
+        param.append("command=postRoom");
+        param.append("&");
+        param.append("name=" + Base64Utility.encode(name));
+        param.append("&");
+        param.append("place=" + Base64Utility.encode(place));
+        param.append("&");
+        param.append("rent=" + String.valueOf(rent));
+        param.append("&");
+        param.append("phone=" + Base64Utility.encode(phone));
+        param.append("&");
+        param.append("email=" + Base64Utility.encode(email));
+        httpManager.execute(Constants.ServerApiUrl, "POST", param.toString());
+    }
+
+    public interface RoomRequesterPostCallback {
+        void didReceiveData(boolean result, String roomId);
+    }
 }

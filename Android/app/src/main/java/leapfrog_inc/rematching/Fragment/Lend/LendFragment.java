@@ -41,7 +41,7 @@ public class LendFragment extends BaseFragment {
         ((Button)view.findViewById(R.id.addButton)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                stackFragment(new LendCreateFragment(), AnimationType.horizontal);
             }
         });
     }

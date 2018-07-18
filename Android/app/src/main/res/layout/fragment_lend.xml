@@ -24,14 +24,16 @@
             <Button
                 android:id="@+id/addButton"
                 android:layout_width="wrap_content"
-                android:layout_height="30dp"
+                android:layout_height="34dp"
                 android:text="＋ 掲載する"
                 android:textSize="11dp"
                 android:textColor="#fff"
                 android:textStyle="bold"
                 android:layout_gravity="center_vertical|right"
                 android:layout_marginRight="16dp"
-                android:background="#1D802A"/>
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:background="@drawable/shape_lend_add_button"/>
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
