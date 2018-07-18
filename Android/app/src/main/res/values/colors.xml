@@ -9,4 +9,6 @@
     <color name="tabUnselected">#B4B4B4</color>
     <color name="separator">#C0C0C0</color>
     <color name="inactiveColor">#9A9A9A</color>
+    <color name="approvedGreen">#1D802A</color>
+    <color name="notApprovedRed">#F4484B</color>
 </resources>

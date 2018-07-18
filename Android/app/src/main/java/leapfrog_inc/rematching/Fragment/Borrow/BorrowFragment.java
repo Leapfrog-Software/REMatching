@@ -69,13 +69,16 @@ public class BorrowFragment extends BaseFragment {
             if (mSearchIndex != 0) {
                 String pref = SearchFragment.Prefs[mSearchIndex];
                 RoomRequester.RoomData roomData = dataList.get(i);
-                if (roomData.place.contains(pref)) {
+                if ((roomData.place.contains(pref)) && (roomData.approval)) {
                     adapter.add(roomData);
                     count++;
                 }
             } else {
-                adapter.add(dataList.get(i));
-                count++;
+                RoomRequester.RoomData roomData = dataList.get(i);
+                if (roomData.approval) {
+                    adapter.add(roomData);
+                    count++;
+                }
             }
         }
 

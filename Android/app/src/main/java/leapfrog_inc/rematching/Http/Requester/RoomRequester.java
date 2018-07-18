@@ -91,4 +91,14 @@ public class RoomRequester {
     public interface RoomRequesterCallback {
         void didReceiveData(boolean result);
     }
+
+    public RoomData query(String roomId) {
+        for (int i = 0; i < dataList.size(); i++) {
+            RoomData roomData = dataList.get(i);
+            if (roomData.id.equals(roomId)) {
+                return roomData;
+            }
+        }
+        return null;
+    }
 }

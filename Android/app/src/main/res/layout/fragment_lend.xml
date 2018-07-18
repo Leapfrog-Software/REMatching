@@ -6,4 +6,57 @@
     android:background="#fff"
     android:clickable="true">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/headerHeight">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="部屋を貸す"
+                android:textSize="@dimen/headerTextSize"
+                android:textStyle="bold"
+                android:textColor="@color/mainBlack"/>
+            <Button
+                android:id="@+id/addButton"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="＋ 掲載する"
+                android:textSize="11dp"
+                android:textColor="#fff"
+                android:textStyle="bold"
+                android:layout_gravity="center_vertical|right"
+                android:layout_marginRight="16dp"
+                android:background="#1D802A"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/separator"
+                android:layout_gravity="bottom"/>
+        </FrameLayout>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+            <ListView
+                android:id="@+id/listView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="none"
+                android:divider="@null"/>
+            <TextView
+                android:id="@+id/noDataTextView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="掲載中の物件はありません"
+                android:textColor="@color/inactiveColor"
+                android:textSize="14dp"
+                android:gravity="center"/>
+        </FrameLayout>
+    </LinearLayout>
+
 </FrameLayout>
